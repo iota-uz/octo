@@ -1,0 +1,853 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Octo Payment API",
+    "version": "1.0.0",
+    "contact": {
+      "name": "IOTA Team",
+      "email": "danil@iota.uz",
+      "url": "https://www.iota.uz"
+    },
+    "license": {
+      "name": "Apache License 2.0",
+      "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "paths": {
+    "/prepare_payment": {
+      "post": {
+        "summary": "Initiate or check payment",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreparePaymentRequest"
+              },
+              "example": {
+                "octo_shop_id": 123456,
+                "octo_secret": "secret_key",
+                "shop_transaction_id": "txn_001",
+                "auto_capture": true,
+                "test": false,
+                "init_time": "2025-05-28 12:00:00",
+                "user_data": {
+                  "user_id": "user_01",
+                  "phone": "+998901234567",
+                  "email": "user@example.com"
+                },
+                "total_sum": 150000.0,
+                "currency": "UZS",
+                "description": "Order #123",
+                "basket": [
+                  {
+                    "position_desc": "Product A",
+                    "count": 1,
+                    "price": 150000.0
+                  }
+                ],
+                "payment_methods": [
+                  {
+                    "method": "uzcard"
+                  }
+                ],
+                "return_url": "https://merchant.uz/return?txn_id=txn_001",
+                "language": "ru"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful or error response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PreparePaymentResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Payments"
+        ],
+        "description": "Initiates a new payment or checks the status of an existing one using `shop_transaction_id`."
+      }
+    },
+    "/set_accept": {
+      "post": {
+        "summary": "Confirm or cancel a transaction",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetAcceptRequest"
+              },
+              "example": {
+                "octo_shop_id": 123456,
+                "octo_secret": "secret_key",
+                "octo_payment_UUID": "uuid-abc-123",
+                "accept_status": "capture",
+                "final_amount": 150000.0
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful or error response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SetAcceptResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Transaction Management"
+        ],
+        "description": "Captures or cancels a previously authorized transaction."
+      }
+    },
+    "/refund": {
+      "post": {
+        "summary": "Refund a payment",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RefundRequest"
+              },
+              "example": {
+                "octo_shop_id": 123456,
+                "shop_refund_id": "refund_001",
+                "octo_secret": "secret_key",
+                "octo_payment_UUID": "uuid-abc-123",
+                "amount": 150000.0
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful or error response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RefundResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Transaction Management"
+        ],
+        "description": "Initiates a refund for a completed transaction."
+      }
+    },
+    "/callback": {
+      "post": {
+        "summary": "Handle Octo callback",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CallbackRequest"
+              },
+              "example": {
+                "octo_secret": "secret_key",
+                "octo_payment_UUID": "uuid-abc-123",
+                "accept_status": "capture",
+                "final_amount": 150000.0
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful or error response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CallbackResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Integration"
+        ],
+        "description": "Callback sent by Octo when a transaction needs confirmation by the merchant."
+      }
+    },
+    "/notification": {
+      "post": {
+        "summary": "Receive notification from Octo",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NotificationRequest"
+              },
+              "example": {
+                "shop_transaction_id": "txn_001",
+                "octo_payment_UUID": "uuid-abc-123",
+                "status": "succeeded",
+                "signature": "sig123",
+                "hash_key": "hash123",
+                "total_sum": 150000.0,
+                "transfer_sum": 145000.0,
+                "refunded_sum": 0.0,
+                "card_country": "UZ",
+                "maskedPan": "8600********1234",
+                "rrn": "123456789012",
+                "riskLevel": 2,
+                "payed_time": "2025-05-28 12:30:00",
+                "card_type": "UZCARD",
+                "is_physical_card": true
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Notification received (no response body expected)"
+          }
+        },
+        "tags": [
+          "Integration"
+        ],
+        "description": "Notification sent by Octo about status changes of a payment."
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "UserData": {
+        "type": "object",
+        "required": [
+          "user_id",
+          "phone",
+          "email"
+        ],
+        "properties": {
+          "user_id": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          }
+        }
+      },
+      "BasketItem": {
+        "type": "object",
+        "required": [
+          "position_desc",
+          "count",
+          "price"
+        ],
+        "properties": {
+          "position_desc": {
+            "type": "string"
+          },
+          "count": {
+            "type": "integer"
+          },
+          "price": {
+            "type": "number"
+          },
+          "spic": {
+            "type": "string"
+          }
+        }
+      },
+      "PaymentMethod": {
+        "type": "object",
+        "required": [
+          "method"
+        ],
+        "properties": {
+          "method": {
+            "type": "string",
+            "enum": [
+              "bank_card",
+              "uzcard",
+              "humo"
+            ]
+          }
+        }
+      },
+      "PreparePaymentRequest": {
+        "type": "object",
+        "required": [
+          "octo_shop_id",
+          "octo_secret",
+          "shop_transaction_id",
+          "auto_capture",
+          "test",
+          "init_time",
+          "total_sum",
+          "currency",
+          "description",
+          "basket",
+          "return_url",
+          "language"
+        ],
+        "properties": {
+          "octo_shop_id": {
+            "type": "integer"
+          },
+          "octo_secret": {
+            "type": "string"
+          },
+          "shop_transaction_id": {
+            "type": "string"
+          },
+          "auto_capture": {
+            "type": "boolean",
+            "default": false
+          },
+          "test": {
+            "type": "boolean"
+          },
+          "init_time": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "user_data": {
+            "$ref": "#/components/schemas/UserData"
+          },
+          "total_sum": {
+            "type": "number"
+          },
+          "currency": {
+            "type": "string",
+            "enum": [
+              "USD",
+              "UZS",
+              "RUB"
+            ]
+          },
+          "description": {
+            "type": "string"
+          },
+          "basket": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BasketItem"
+            }
+          },
+          "payment_methods": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PaymentMethod"
+            }
+          },
+          "tsp_id": {
+            "type": "integer"
+          },
+          "return_url": {
+            "type": "string"
+          },
+          "notify_url": {
+            "type": "string"
+          },
+          "language": {
+            "type": "string",
+            "enum": [
+              "oz",
+              "uz",
+              "en",
+              "ru"
+            ]
+          },
+          "ttl": {
+            "type": "integer"
+          }
+        }
+      },
+      "PreparePaymentSuccessResponse": {
+        "type": "object",
+        "required": [
+          "error",
+          "data"
+        ],
+        "properties": {
+          "error": {
+            "type": "integer",
+            "enum": [
+              0
+            ]
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "shop_transaction_id": {
+                "type": "string"
+              },
+              "octo_payment_UUID": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string"
+              },
+              "octo_pay_url": {
+                "type": "string"
+              },
+              "refunded_sum": {
+                "type": "number"
+              },
+              "total_sum": {
+                "type": "number"
+              }
+            }
+          },
+          "apiMessageForDevelopers": {
+            "type": "string"
+          },
+          "shop_transaction_id": {
+            "type": "string"
+          },
+          "octo_payment_UUID": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "octo_pay_url": {
+            "type": "string"
+          },
+          "refunded_sum": {
+            "type": "number"
+          },
+          "total_sum": {
+            "type": "number"
+          }
+        }
+      },
+      "SetAcceptRequest": {
+        "type": "object",
+        "required": [
+          "octo_shop_id",
+          "octo_secret",
+          "octo_payment_UUID",
+          "accept_status",
+          "final_amount"
+        ],
+        "properties": {
+          "octo_shop_id": {
+            "type": "integer"
+          },
+          "octo_secret": {
+            "type": "string"
+          },
+          "octo_payment_UUID": {
+            "type": "string"
+          },
+          "accept_status": {
+            "type": "string",
+            "enum": [
+              "capture",
+              "cancel"
+            ]
+          },
+          "final_amount": {
+            "type": "number"
+          }
+        }
+      },
+      "RefundRequest": {
+        "type": "object",
+        "required": [
+          "octo_shop_id",
+          "shop_refund_id",
+          "octo_secret",
+          "octo_payment_UUID",
+          "amount"
+        ],
+        "properties": {
+          "octo_shop_id": {
+            "type": "integer"
+          },
+          "shop_refund_id": {
+            "type": "string"
+          },
+          "octo_secret": {
+            "type": "string"
+          },
+          "octo_payment_UUID": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "number"
+          }
+        }
+      },
+      "RefundSuccessResponse": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "integer",
+            "enum": [
+              0
+            ]
+          },
+          "errMessage": {
+            "type": "string"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "octo_payment_UUID": {
+                "type": "string"
+              },
+              "refund_id": {
+                "type": "string"
+              },
+              "refund_time": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "status": {
+                "type": "string"
+              }
+            }
+          },
+          "apiMessageForDevelopers": {
+            "type": "string"
+          }
+        }
+      },
+      "SetAcceptSuccessResponse": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "integer",
+            "enum": [
+              0
+            ]
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "shop_transaction_id": {
+                "type": "string"
+              },
+              "octo_payment_UUID": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string"
+              },
+              "octo_pay_url": {
+                "type": "string"
+              },
+              "transfer_sum": {
+                "type": "number"
+              },
+              "refunded_sum": {
+                "type": "number"
+              },
+              "total_sum": {
+                "type": "number"
+              },
+              "payed_time": {
+                "type": "string",
+                "format": "date-time"
+              }
+            }
+          },
+          "apiMessageForDevelopers": {
+            "type": "string"
+          }
+        }
+      },
+      "CallbackRequest": {
+        "type": "object",
+        "required": [
+          "octo_secret",
+          "octo_payment_UUID",
+          "accept_status"
+        ],
+        "properties": {
+          "octo_secret": {
+            "type": "string"
+          },
+          "octo_payment_UUID": {
+            "type": "string"
+          },
+          "accept_status": {
+            "type": "string",
+            "enum": [
+              "capture",
+              "cancel"
+            ]
+          },
+          "final_amount": {
+            "type": "number"
+          }
+        }
+      },
+      "CallbackResponse": {
+        "type": "object",
+        "properties": {
+          "accept_status": {
+            "type": "string",
+            "enum": [
+              "capture",
+              "cancel"
+            ]
+          },
+          "final_amount": {
+            "type": "number"
+          }
+        }
+      },
+      "NotificationRequest": {
+        "type": "object",
+        "required": [
+          "shop_transaction_id",
+          "octo_payment_UUID",
+          "status",
+          "signature",
+          "hash_key"
+        ],
+        "properties": {
+          "shop_transaction_id": {
+            "type": "string",
+            "description": "Transaction ID on merchant's side"
+          },
+          "octo_payment_UUID": {
+            "type": "string",
+            "description": "Octo payment UUID"
+          },
+          "status": {
+            "type": "string",
+            "description": "Current transaction status"
+          },
+          "signature": {
+            "type": "string",
+            "description": "Cryptographic signature"
+          },
+          "hash_key": {
+            "type": "string",
+            "description": "Hash key for validation"
+          },
+          "total_sum": {
+            "type": "number",
+            "description": "Total amount of the payment"
+          },
+          "transfer_sum": {
+            "type": "number",
+            "description": "Amount transferred after commissions"
+          },
+          "refunded_sum": {
+            "type": "number",
+            "description": "Refunded amount if any"
+          },
+          "card_country": {
+            "type": "string",
+            "description": "Country where the card was issued"
+          },
+          "maskedPan": {
+            "type": "string",
+            "description": "Masked card number"
+          },
+          "rrn": {
+            "type": "string",
+            "description": "Retrieval Reference Number"
+          },
+          "riskLevel": {
+            "type": "integer",
+            "description": "Risk level of the transaction"
+          },
+          "payed_time": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp of successful payment"
+          },
+          "card_type": {
+            "type": "string",
+            "description": "Type of the card used"
+          },
+          "is_physical_card": {
+            "type": "boolean",
+            "description": "Whether the card is physical"
+          }
+        }
+      },
+      "PreparePaymentResponse": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "integer"
+          },
+          "errMessage": {
+            "type": "string"
+          },
+          "errorMessage": {
+            "type": "string"
+          },
+          "apiMessageForDevelopers": {
+            "type": "string"
+          },
+          "shop_transaction_id": {
+            "type": "string"
+          },
+          "octo_payment_UUID": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "octo_pay_url": {
+            "type": "string"
+          },
+          "refunded_sum": {
+            "type": "number"
+          },
+          "total_sum": {
+            "type": "number"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "shop_transaction_id": {
+                "type": "string"
+              },
+              "octo_payment_UUID": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string"
+              },
+              "octo_pay_url": {
+                "type": "string"
+              },
+              "refunded_sum": {
+                "type": "number"
+              },
+              "total_sum": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      },
+      "SetAcceptResponse": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "integer"
+          },
+          "errMessage": {
+            "type": "string"
+          },
+          "errorMessage": {
+            "type": "string"
+          },
+          "apiMessageForDevelopers": {
+            "type": "string"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "shop_transaction_id": {
+                "type": "string"
+              },
+              "octo_payment_UUID": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string"
+              },
+              "octo_pay_url": {
+                "type": "string"
+              },
+              "transfer_sum": {
+                "type": "number"
+              },
+              "refunded_sum": {
+                "type": "number"
+              },
+              "total_sum": {
+                "type": "number"
+              },
+              "payed_time": {
+                "type": "string",
+                "format": "date-time"
+              }
+            }
+          }
+        }
+      },
+      "RefundResponse": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "integer"
+          },
+          "errMessage": {
+            "type": "string"
+          },
+          "errorMessage": {
+            "type": "string"
+          },
+          "apiMessageForDevelopers": {
+            "type": "string"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "octo_payment_UUID": {
+                "type": "string"
+              },
+              "refund_id": {
+                "type": "string"
+              },
+              "refund_time": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "status": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "https://secure.octo.uz",
+      "description": "Production server"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Payments",
+      "description": "Operations related to payments"
+    },
+    {
+      "name": "Transaction Management",
+      "description": "Confirm, cancel and refund transactions"
+    },
+    {
+      "name": "Integration",
+      "description": "Callbacks and notifications"
+    }
+  ]
+}
