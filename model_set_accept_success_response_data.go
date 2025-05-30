@@ -25,9 +25,9 @@ type SetAcceptSuccessResponseData struct {
 	OctoPaymentUUID   *string    `form:"octo_payment_UUID" json:"octo_payment_UUID,omitempty"`
 	Status            *string    `form:"status" json:"status,omitempty"`
 	OctoPayUrl        *string    `form:"octo_pay_url" json:"octo_pay_url,omitempty"`
-	TransferSum       *float32   `form:"transfer_sum" json:"transfer_sum,omitempty"`
-	RefundedSum       *float32   `form:"refunded_sum" json:"refunded_sum,omitempty"`
-	TotalSum          *float32   `form:"total_sum" json:"total_sum,omitempty"`
+	TransferSum       *float64   `form:"transfer_sum" json:"transfer_sum,omitempty"`
+	RefundedSum       *float64   `form:"refunded_sum" json:"refunded_sum,omitempty"`
+	TotalSum          *float64   `form:"total_sum" json:"total_sum,omitempty"`
 	PayedTime         *time.Time `form:"payed_time" json:"payed_time,omitempty"`
 }
 
@@ -177,9 +177,9 @@ func (o *SetAcceptSuccessResponseData) SetOctoPayUrl(v string) {
 }
 
 // GetTransferSum returns the TransferSum field value if set, zero value otherwise.
-func (o *SetAcceptSuccessResponseData) GetTransferSum() float32 {
+func (o *SetAcceptSuccessResponseData) GetTransferSum() float64 {
 	if o == nil || IsNil(o.TransferSum) {
-		var ret float32
+		var ret float64
 		return ret
 	}
 	return *o.TransferSum
@@ -187,7 +187,7 @@ func (o *SetAcceptSuccessResponseData) GetTransferSum() float32 {
 
 // GetTransferSumOk returns a tuple with the TransferSum field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SetAcceptSuccessResponseData) GetTransferSumOk() (*float32, bool) {
+func (o *SetAcceptSuccessResponseData) GetTransferSumOk() (*float64, bool) {
 	if o == nil || IsNil(o.TransferSum) {
 		return nil, false
 	}
@@ -203,15 +203,15 @@ func (o *SetAcceptSuccessResponseData) HasTransferSum() bool {
 	return false
 }
 
-// SetTransferSum gets a reference to the given float32 and assigns it to the TransferSum field.
-func (o *SetAcceptSuccessResponseData) SetTransferSum(v float32) {
+// SetTransferSum gets a reference to the given float64 and assigns it to the TransferSum field.
+func (o *SetAcceptSuccessResponseData) SetTransferSum(v float64) {
 	o.TransferSum = &v
 }
 
 // GetRefundedSum returns the RefundedSum field value if set, zero value otherwise.
-func (o *SetAcceptSuccessResponseData) GetRefundedSum() float32 {
+func (o *SetAcceptSuccessResponseData) GetRefundedSum() float64 {
 	if o == nil || IsNil(o.RefundedSum) {
-		var ret float32
+		var ret float64
 		return ret
 	}
 	return *o.RefundedSum
@@ -219,7 +219,7 @@ func (o *SetAcceptSuccessResponseData) GetRefundedSum() float32 {
 
 // GetRefundedSumOk returns a tuple with the RefundedSum field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SetAcceptSuccessResponseData) GetRefundedSumOk() (*float32, bool) {
+func (o *SetAcceptSuccessResponseData) GetRefundedSumOk() (*float64, bool) {
 	if o == nil || IsNil(o.RefundedSum) {
 		return nil, false
 	}
@@ -235,15 +235,15 @@ func (o *SetAcceptSuccessResponseData) HasRefundedSum() bool {
 	return false
 }
 
-// SetRefundedSum gets a reference to the given float32 and assigns it to the RefundedSum field.
-func (o *SetAcceptSuccessResponseData) SetRefundedSum(v float32) {
+// SetRefundedSum gets a reference to the given float64 and assigns it to the RefundedSum field.
+func (o *SetAcceptSuccessResponseData) SetRefundedSum(v float64) {
 	o.RefundedSum = &v
 }
 
 // GetTotalSum returns the TotalSum field value if set, zero value otherwise.
-func (o *SetAcceptSuccessResponseData) GetTotalSum() float32 {
+func (o *SetAcceptSuccessResponseData) GetTotalSum() float64 {
 	if o == nil || IsNil(o.TotalSum) {
-		var ret float32
+		var ret float64
 		return ret
 	}
 	return *o.TotalSum
@@ -251,7 +251,7 @@ func (o *SetAcceptSuccessResponseData) GetTotalSum() float32 {
 
 // GetTotalSumOk returns a tuple with the TotalSum field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SetAcceptSuccessResponseData) GetTotalSumOk() (*float32, bool) {
+func (o *SetAcceptSuccessResponseData) GetTotalSumOk() (*float64, bool) {
 	if o == nil || IsNil(o.TotalSum) {
 		return nil, false
 	}
@@ -267,8 +267,8 @@ func (o *SetAcceptSuccessResponseData) HasTotalSum() bool {
 	return false
 }
 
-// SetTotalSum gets a reference to the given float32 and assigns it to the TotalSum field.
-func (o *SetAcceptSuccessResponseData) SetTotalSum(v float32) {
+// SetTotalSum gets a reference to the given float64 and assigns it to the TotalSum field.
+func (o *SetAcceptSuccessResponseData) SetTotalSum(v float64) {
 	o.TotalSum = &v
 }
 

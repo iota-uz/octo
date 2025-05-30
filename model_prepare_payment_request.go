@@ -15,7 +15,6 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"time"
 )
 
 // checks if the PreparePaymentRequest type satisfies the MappedNullable interface at compile time
@@ -28,16 +27,16 @@ type PreparePaymentRequest struct {
 	ShopTransactionId string          `form:"shop_transaction_id" json:"shop_transaction_id"`
 	AutoCapture       bool            `form:"auto_capture" json:"auto_capture"`
 	Test              bool            `form:"test" json:"test"`
-	InitTime          time.Time       `form:"init_time" json:"init_time"`
+	InitTime          string          `form:"init_time" json:"init_time"`
 	UserData          *UserData       `form:"user_data" json:"user_data,omitempty"`
-	TotalSum          float32         `form:"total_sum" json:"total_sum"`
+	TotalSum          float64         `form:"total_sum" json:"total_sum"`
 	Currency          string          `form:"currency" json:"currency"`
 	Description       string          `form:"description" json:"description"`
-	Basket            []BasketItem    `form:"basket" json:"basket"`
+	Basket            []BasketItem    `form:"basket" json:"basket,omitempty"`
 	PaymentMethods    []PaymentMethod `form:"payment_methods" json:"payment_methods,omitempty"`
 	TspId             *int32          `form:"tsp_id" json:"tsp_id,omitempty"`
 	ReturnUrl         string          `form:"return_url" json:"return_url"`
-	NotifyUrl         *string         `form:"notify_url" json:"notify_url,omitempty"`
+	NotifyUrl         string          `form:"notify_url" json:"notify_url"`
 	Language          string          `form:"language" json:"language"`
 	Ttl               *int32          `form:"ttl" json:"ttl,omitempty"`
 }
@@ -48,7 +47,7 @@ type _PreparePaymentRequest PreparePaymentRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPreparePaymentRequest(octoShopId int32, octoSecret string, shopTransactionId string, autoCapture bool, test bool, initTime time.Time, totalSum float32, currency string, description string, basket []BasketItem, returnUrl string, language string) *PreparePaymentRequest {
+func NewPreparePaymentRequest(octoShopId int32, octoSecret string, shopTransactionId string, autoCapture bool, test bool, initTime string, totalSum float64, currency string, description string, returnUrl string, notifyUrl string, language string) *PreparePaymentRequest {
 	this := PreparePaymentRequest{}
 	this.OctoShopId = octoShopId
 	this.OctoSecret = octoSecret
@@ -59,8 +58,8 @@ func NewPreparePaymentRequest(octoShopId int32, octoSecret string, shopTransacti
 	this.TotalSum = totalSum
 	this.Currency = currency
 	this.Description = description
-	this.Basket = basket
 	this.ReturnUrl = returnUrl
+	this.NotifyUrl = notifyUrl
 	this.Language = language
 	return &this
 }
@@ -196,9 +195,9 @@ func (o *PreparePaymentRequest) SetTest(v bool) {
 }
 
 // GetInitTime returns the InitTime field value
-func (o *PreparePaymentRequest) GetInitTime() time.Time {
+func (o *PreparePaymentRequest) GetInitTime() string {
 	if o == nil {
-		var ret time.Time
+		var ret string
 		return ret
 	}
 
@@ -207,7 +206,7 @@ func (o *PreparePaymentRequest) GetInitTime() time.Time {
 
 // GetInitTimeOk returns a tuple with the InitTime field value
 // and a boolean to check if the value has been set.
-func (o *PreparePaymentRequest) GetInitTimeOk() (*time.Time, bool) {
+func (o *PreparePaymentRequest) GetInitTimeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -215,7 +214,7 @@ func (o *PreparePaymentRequest) GetInitTimeOk() (*time.Time, bool) {
 }
 
 // SetInitTime sets field value
-func (o *PreparePaymentRequest) SetInitTime(v time.Time) {
+func (o *PreparePaymentRequest) SetInitTime(v string) {
 	o.InitTime = v
 }
 
@@ -252,9 +251,9 @@ func (o *PreparePaymentRequest) SetUserData(v UserData) {
 }
 
 // GetTotalSum returns the TotalSum field value
-func (o *PreparePaymentRequest) GetTotalSum() float32 {
+func (o *PreparePaymentRequest) GetTotalSum() float64 {
 	if o == nil {
-		var ret float32
+		var ret float64
 		return ret
 	}
 
@@ -263,7 +262,7 @@ func (o *PreparePaymentRequest) GetTotalSum() float32 {
 
 // GetTotalSumOk returns a tuple with the TotalSum field value
 // and a boolean to check if the value has been set.
-func (o *PreparePaymentRequest) GetTotalSumOk() (*float32, bool) {
+func (o *PreparePaymentRequest) GetTotalSumOk() (*float64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -271,7 +270,7 @@ func (o *PreparePaymentRequest) GetTotalSumOk() (*float32, bool) {
 }
 
 // SetTotalSum sets field value
-func (o *PreparePaymentRequest) SetTotalSum(v float32) {
+func (o *PreparePaymentRequest) SetTotalSum(v float64) {
 	o.TotalSum = v
 }
 
@@ -323,26 +322,34 @@ func (o *PreparePaymentRequest) SetDescription(v string) {
 	o.Description = v
 }
 
-// GetBasket returns the Basket field value
+// GetBasket returns the Basket field value if set, zero value otherwise.
 func (o *PreparePaymentRequest) GetBasket() []BasketItem {
-	if o == nil {
+	if o == nil || IsNil(o.Basket) {
 		var ret []BasketItem
 		return ret
 	}
-
 	return o.Basket
 }
 
-// GetBasketOk returns a tuple with the Basket field value
+// GetBasketOk returns a tuple with the Basket field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PreparePaymentRequest) GetBasketOk() ([]BasketItem, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Basket) {
 		return nil, false
 	}
 	return o.Basket, true
 }
 
-// SetBasket sets field value
+// HasBasket returns a boolean if a field has been set.
+func (o *PreparePaymentRequest) HasBasket() bool {
+	if o != nil && !IsNil(o.Basket) {
+		return true
+	}
+
+	return false
+}
+
+// SetBasket gets a reference to the given []BasketItem and assigns it to the Basket field.
 func (o *PreparePaymentRequest) SetBasket(v []BasketItem) {
 	o.Basket = v
 }
@@ -435,36 +442,28 @@ func (o *PreparePaymentRequest) SetReturnUrl(v string) {
 	o.ReturnUrl = v
 }
 
-// GetNotifyUrl returns the NotifyUrl field value if set, zero value otherwise.
+// GetNotifyUrl returns the NotifyUrl field value
 func (o *PreparePaymentRequest) GetNotifyUrl() string {
-	if o == nil || IsNil(o.NotifyUrl) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.NotifyUrl
+
+	return o.NotifyUrl
 }
 
-// GetNotifyUrlOk returns a tuple with the NotifyUrl field value if set, nil otherwise
+// GetNotifyUrlOk returns a tuple with the NotifyUrl field value
 // and a boolean to check if the value has been set.
 func (o *PreparePaymentRequest) GetNotifyUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.NotifyUrl) {
+	if o == nil {
 		return nil, false
 	}
-	return o.NotifyUrl, true
+	return &o.NotifyUrl, true
 }
 
-// HasNotifyUrl returns a boolean if a field has been set.
-func (o *PreparePaymentRequest) HasNotifyUrl() bool {
-	if o != nil && !IsNil(o.NotifyUrl) {
-		return true
-	}
-
-	return false
-}
-
-// SetNotifyUrl gets a reference to the given string and assigns it to the NotifyUrl field.
+// SetNotifyUrl sets field value
 func (o *PreparePaymentRequest) SetNotifyUrl(v string) {
-	o.NotifyUrl = &v
+	o.NotifyUrl = v
 }
 
 // GetLanguage returns the Language field value
@@ -545,7 +544,9 @@ func (o PreparePaymentRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["total_sum"] = o.TotalSum
 	toSerialize["currency"] = o.Currency
 	toSerialize["description"] = o.Description
-	toSerialize["basket"] = o.Basket
+	if !IsNil(o.Basket) {
+		toSerialize["basket"] = o.Basket
+	}
 	if !IsNil(o.PaymentMethods) {
 		toSerialize["payment_methods"] = o.PaymentMethods
 	}
@@ -553,9 +554,7 @@ func (o PreparePaymentRequest) ToMap() (map[string]interface{}, error) {
 		toSerialize["tsp_id"] = o.TspId
 	}
 	toSerialize["return_url"] = o.ReturnUrl
-	if !IsNil(o.NotifyUrl) {
-		toSerialize["notify_url"] = o.NotifyUrl
-	}
+	toSerialize["notify_url"] = o.NotifyUrl
 	toSerialize["language"] = o.Language
 	if !IsNil(o.Ttl) {
 		toSerialize["ttl"] = o.Ttl
@@ -577,8 +576,8 @@ func (o *PreparePaymentRequest) UnmarshalJSON(data []byte) (err error) {
 		"total_sum",
 		"currency",
 		"description",
-		"basket",
 		"return_url",
+		"notify_url",
 		"language",
 	}
 

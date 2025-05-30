@@ -9,16 +9,16 @@ Name | Type | Description | Notes
 **ShopTransactionId** | **string** |  | 
 **AutoCapture** | **bool** |  | [default to false]
 **Test** | **bool** |  | 
-**InitTime** | **time.Time** |  | 
+**InitTime** | **string** |  | 
 **UserData** | Pointer to [**UserData**](UserData.md) |  | [optional] 
-**TotalSum** | **float32** |  | 
+**TotalSum** | **float64** |  | 
 **Currency** | **string** |  | 
 **Description** | **string** |  | 
-**Basket** | [**[]BasketItem**](BasketItem.md) |  | 
+**Basket** | Pointer to [**[]BasketItem**](BasketItem.md) |  | [optional] 
 **PaymentMethods** | Pointer to [**[]PaymentMethod**](PaymentMethod.md) |  | [optional] 
 **TspId** | Pointer to **int32** |  | [optional] 
 **ReturnUrl** | **string** |  | 
-**NotifyUrl** | Pointer to **string** |  | [optional] 
+**NotifyUrl** | **string** |  | 
 **Language** | **string** |  | 
 **Ttl** | Pointer to **int32** |  | [optional] 
 
@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 
 ### NewPreparePaymentRequest
 
-`func NewPreparePaymentRequest(octoShopId int32, octoSecret string, shopTransactionId string, autoCapture bool, test bool, initTime time.Time, totalSum float32, currency string, description string, basket []BasketItem, returnUrl string, language string, ) *PreparePaymentRequest`
+`func NewPreparePaymentRequest(octoShopId int32, octoSecret string, shopTransactionId string, autoCapture bool, test bool, initTime string, totalSum float64, currency string, description string, returnUrl string, notifyUrl string, language string, ) *PreparePaymentRequest`
 
 NewPreparePaymentRequest instantiates a new PreparePaymentRequest object
 This constructor will assign default values to properties that have it defined,
@@ -143,20 +143,20 @@ SetTest sets Test field to given value.
 
 ### GetInitTime
 
-`func (o *PreparePaymentRequest) GetInitTime() time.Time`
+`func (o *PreparePaymentRequest) GetInitTime() string`
 
 GetInitTime returns the InitTime field if non-nil, zero value otherwise.
 
 ### GetInitTimeOk
 
-`func (o *PreparePaymentRequest) GetInitTimeOk() (*time.Time, bool)`
+`func (o *PreparePaymentRequest) GetInitTimeOk() (*string, bool)`
 
 GetInitTimeOk returns a tuple with the InitTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetInitTime
 
-`func (o *PreparePaymentRequest) SetInitTime(v time.Time)`
+`func (o *PreparePaymentRequest) SetInitTime(v string)`
 
 SetInitTime sets InitTime field to given value.
 
@@ -188,20 +188,20 @@ HasUserData returns a boolean if a field has been set.
 
 ### GetTotalSum
 
-`func (o *PreparePaymentRequest) GetTotalSum() float32`
+`func (o *PreparePaymentRequest) GetTotalSum() float64`
 
 GetTotalSum returns the TotalSum field if non-nil, zero value otherwise.
 
 ### GetTotalSumOk
 
-`func (o *PreparePaymentRequest) GetTotalSumOk() (*float32, bool)`
+`func (o *PreparePaymentRequest) GetTotalSumOk() (*float64, bool)`
 
 GetTotalSumOk returns a tuple with the TotalSum field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTotalSum
 
-`func (o *PreparePaymentRequest) SetTotalSum(v float32)`
+`func (o *PreparePaymentRequest) SetTotalSum(v float64)`
 
 SetTotalSum sets TotalSum field to given value.
 
@@ -265,6 +265,11 @@ and a boolean to check if the value has been set.
 
 SetBasket sets Basket field to given value.
 
+### HasBasket
+
+`func (o *PreparePaymentRequest) HasBasket() bool`
+
+HasBasket returns a boolean if a field has been set.
 
 ### GetPaymentMethods
 
@@ -355,11 +360,6 @@ and a boolean to check if the value has been set.
 
 SetNotifyUrl sets NotifyUrl field to given value.
 
-### HasNotifyUrl
-
-`func (o *PreparePaymentRequest) HasNotifyUrl() bool`
-
-HasNotifyUrl returns a boolean if a field has been set.
 
 ### GetLanguage
 

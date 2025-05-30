@@ -25,7 +25,7 @@ type CallbackRequest struct {
 	OctoSecret      string   `form:"octo_secret" json:"octo_secret"`
 	OctoPaymentUUID string   `form:"octo_payment_UUID" json:"octo_payment_UUID"`
 	AcceptStatus    string   `form:"accept_status" json:"accept_status"`
-	FinalAmount     *float32 `form:"final_amount" json:"final_amount,omitempty"`
+	FinalAmount     *float64 `form:"final_amount" json:"final_amount,omitempty"`
 }
 
 type _CallbackRequest CallbackRequest
@@ -123,9 +123,9 @@ func (o *CallbackRequest) SetAcceptStatus(v string) {
 }
 
 // GetFinalAmount returns the FinalAmount field value if set, zero value otherwise.
-func (o *CallbackRequest) GetFinalAmount() float32 {
+func (o *CallbackRequest) GetFinalAmount() float64 {
 	if o == nil || IsNil(o.FinalAmount) {
-		var ret float32
+		var ret float64
 		return ret
 	}
 	return *o.FinalAmount
@@ -133,7 +133,7 @@ func (o *CallbackRequest) GetFinalAmount() float32 {
 
 // GetFinalAmountOk returns a tuple with the FinalAmount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CallbackRequest) GetFinalAmountOk() (*float32, bool) {
+func (o *CallbackRequest) GetFinalAmountOk() (*float64, bool) {
 	if o == nil || IsNil(o.FinalAmount) {
 		return nil, false
 	}
@@ -149,8 +149,8 @@ func (o *CallbackRequest) HasFinalAmount() bool {
 	return false
 }
 
-// SetFinalAmount gets a reference to the given float32 and assigns it to the FinalAmount field.
-func (o *CallbackRequest) SetFinalAmount(v float32) {
+// SetFinalAmount gets a reference to the given float64 and assigns it to the FinalAmount field.
+func (o *CallbackRequest) SetFinalAmount(v float64) {
 	o.FinalAmount = &v
 }
 

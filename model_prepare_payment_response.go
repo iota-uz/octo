@@ -28,8 +28,8 @@ type PreparePaymentResponse struct {
 	OctoPaymentUUID         *string                            `form:"octo_payment_UUID" json:"octo_payment_UUID,omitempty"`
 	Status                  *string                            `form:"status" json:"status,omitempty"`
 	OctoPayUrl              *string                            `form:"octo_pay_url" json:"octo_pay_url,omitempty"`
-	RefundedSum             *float32                           `form:"refunded_sum" json:"refunded_sum,omitempty"`
-	TotalSum                *float32                           `form:"total_sum" json:"total_sum,omitempty"`
+	RefundedSum             *float64                           `form:"refunded_sum" json:"refunded_sum,omitempty"`
+	TotalSum                *float64                           `form:"total_sum" json:"total_sum,omitempty"`
 	Data                    *PreparePaymentSuccessResponseData `form:"data" json:"data,omitempty"`
 }
 
@@ -307,9 +307,9 @@ func (o *PreparePaymentResponse) SetOctoPayUrl(v string) {
 }
 
 // GetRefundedSum returns the RefundedSum field value if set, zero value otherwise.
-func (o *PreparePaymentResponse) GetRefundedSum() float32 {
+func (o *PreparePaymentResponse) GetRefundedSum() float64 {
 	if o == nil || IsNil(o.RefundedSum) {
-		var ret float32
+		var ret float64
 		return ret
 	}
 	return *o.RefundedSum
@@ -317,7 +317,7 @@ func (o *PreparePaymentResponse) GetRefundedSum() float32 {
 
 // GetRefundedSumOk returns a tuple with the RefundedSum field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PreparePaymentResponse) GetRefundedSumOk() (*float32, bool) {
+func (o *PreparePaymentResponse) GetRefundedSumOk() (*float64, bool) {
 	if o == nil || IsNil(o.RefundedSum) {
 		return nil, false
 	}
@@ -333,15 +333,15 @@ func (o *PreparePaymentResponse) HasRefundedSum() bool {
 	return false
 }
 
-// SetRefundedSum gets a reference to the given float32 and assigns it to the RefundedSum field.
-func (o *PreparePaymentResponse) SetRefundedSum(v float32) {
+// SetRefundedSum gets a reference to the given float64 and assigns it to the RefundedSum field.
+func (o *PreparePaymentResponse) SetRefundedSum(v float64) {
 	o.RefundedSum = &v
 }
 
 // GetTotalSum returns the TotalSum field value if set, zero value otherwise.
-func (o *PreparePaymentResponse) GetTotalSum() float32 {
+func (o *PreparePaymentResponse) GetTotalSum() float64 {
 	if o == nil || IsNil(o.TotalSum) {
-		var ret float32
+		var ret float64
 		return ret
 	}
 	return *o.TotalSum
@@ -349,7 +349,7 @@ func (o *PreparePaymentResponse) GetTotalSum() float32 {
 
 // GetTotalSumOk returns a tuple with the TotalSum field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PreparePaymentResponse) GetTotalSumOk() (*float32, bool) {
+func (o *PreparePaymentResponse) GetTotalSumOk() (*float64, bool) {
 	if o == nil || IsNil(o.TotalSum) {
 		return nil, false
 	}
@@ -365,8 +365,8 @@ func (o *PreparePaymentResponse) HasTotalSum() bool {
 	return false
 }
 
-// SetTotalSum gets a reference to the given float32 and assigns it to the TotalSum field.
-func (o *PreparePaymentResponse) SetTotalSum(v float32) {
+// SetTotalSum gets a reference to the given float64 and assigns it to the TotalSum field.
+func (o *PreparePaymentResponse) SetTotalSum(v float64) {
 	o.TotalSum = &v
 }
 

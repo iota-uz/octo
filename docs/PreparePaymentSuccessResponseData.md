@@ -8,8 +8,8 @@ Name | Type | Description | Notes
 **OctoPaymentUUID** | Pointer to **string** |  | [optional] 
 **Status** | Pointer to **string** |  | [optional] 
 **OctoPayUrl** | Pointer to **string** |  | [optional] 
-**RefundedSum** | Pointer to **float32** |  | [optional] 
-**TotalSum** | Pointer to **float32** |  | [optional] 
+**RefundedSum** | Pointer to **float64** |  | [optional] 
+**TotalSum** | Pointer to **float64** |  | [optional] 
 
 ## Methods
 
@@ -132,20 +132,20 @@ HasOctoPayUrl returns a boolean if a field has been set.
 
 ### GetRefundedSum
 
-`func (o *PreparePaymentSuccessResponseData) GetRefundedSum() float32`
+`func (o *PreparePaymentSuccessResponseData) GetRefundedSum() float64`
 
 GetRefundedSum returns the RefundedSum field if non-nil, zero value otherwise.
 
 ### GetRefundedSumOk
 
-`func (o *PreparePaymentSuccessResponseData) GetRefundedSumOk() (*float32, bool)`
+`func (o *PreparePaymentSuccessResponseData) GetRefundedSumOk() (*float64, bool)`
 
 GetRefundedSumOk returns a tuple with the RefundedSum field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRefundedSum
 
-`func (o *PreparePaymentSuccessResponseData) SetRefundedSum(v float32)`
+`func (o *PreparePaymentSuccessResponseData) SetRefundedSum(v float64)`
 
 SetRefundedSum sets RefundedSum field to given value.
 
@@ -157,20 +157,20 @@ HasRefundedSum returns a boolean if a field has been set.
 
 ### GetTotalSum
 
-`func (o *PreparePaymentSuccessResponseData) GetTotalSum() float32`
+`func (o *PreparePaymentSuccessResponseData) GetTotalSum() float64`
 
 GetTotalSum returns the TotalSum field if non-nil, zero value otherwise.
 
 ### GetTotalSumOk
 
-`func (o *PreparePaymentSuccessResponseData) GetTotalSumOk() (*float32, bool)`
+`func (o *PreparePaymentSuccessResponseData) GetTotalSumOk() (*float64, bool)`
 
 GetTotalSumOk returns a tuple with the TotalSum field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTotalSum
 
-`func (o *PreparePaymentSuccessResponseData) SetTotalSum(v float32)`
+`func (o *PreparePaymentSuccessResponseData) SetTotalSum(v float64)`
 
 SetTotalSum sets TotalSum field to given value.
 

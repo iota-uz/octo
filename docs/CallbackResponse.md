@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AcceptStatus** | Pointer to **string** |  | [optional] 
-**FinalAmount** | Pointer to **float32** |  | [optional] 
+**FinalAmount** | Pointer to **float64** |  | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasAcceptStatus returns a boolean if a field has been set.
 
 ### GetFinalAmount
 
-`func (o *CallbackResponse) GetFinalAmount() float32`
+`func (o *CallbackResponse) GetFinalAmount() float64`
 
 GetFinalAmount returns the FinalAmount field if non-nil, zero value otherwise.
 
 ### GetFinalAmountOk
 
-`func (o *CallbackResponse) GetFinalAmountOk() (*float32, bool)`
+`func (o *CallbackResponse) GetFinalAmountOk() (*float64, bool)`
 
 GetFinalAmountOk returns a tuple with the FinalAmount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFinalAmount
 
-`func (o *CallbackResponse) SetFinalAmount(v float32)`
+`func (o *CallbackResponse) SetFinalAmount(v float64)`
 
 SetFinalAmount sets FinalAmount field to given value.
 

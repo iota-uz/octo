@@ -11,27 +11,43 @@ package octoapi
 
 import (
 	"context"
+	"strconv"
+	"testing"
+	"time"
+
 	openapiclient "github.com/iota-uz/octo"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
 )
 
 func Test_octoapi_PaymentsAPIService(t *testing.T) {
-
+	env := LoadEnvConfiguration()
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test PaymentsAPIService PreparePaymentPost", func(t *testing.T) {
+		req := openapiclient.PreparePaymentRequest{
+			OctoShopId:        env.OctoShopId,
+			OctoSecret:        env.OctoSecret,
+			ShopTransactionId: strconv.FormatInt(time.Now().UnixMilli(), 10),
+			InitTime:          time.Now().Format("2006-01-02 15:04:05"),
+			AutoCapture:       false,
+			Test:              true,
+			TotalSum:          1000,
+			Currency:          "UZS",
+			Description:       "Test",
+			ReturnUrl:         "https://octo.uz",
+			NotifyUrl:         env.NotifyUrl,
+		}
 
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.PaymentsAPI.PreparePaymentPost(context.Background()).Execute()
+		resp, httpRes, err := apiClient.PaymentsAPI.
+			PreparePaymentPost(context.Background()).
+			PreparePaymentRequest(req).
+			Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
-
 	})
 
 }

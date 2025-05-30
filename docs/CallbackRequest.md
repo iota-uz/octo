@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **OctoSecret** | **string** |  | 
 **OctoPaymentUUID** | **string** |  | 
 **AcceptStatus** | **string** |  | 
-**FinalAmount** | Pointer to **float32** |  | [optional] 
+**FinalAmount** | Pointer to **float64** |  | [optional] 
 
 ## Methods
 
@@ -90,20 +90,20 @@ SetAcceptStatus sets AcceptStatus field to given value.
 
 ### GetFinalAmount
 
-`func (o *CallbackRequest) GetFinalAmount() float32`
+`func (o *CallbackRequest) GetFinalAmount() float64`
 
 GetFinalAmount returns the FinalAmount field if non-nil, zero value otherwise.
 
 ### GetFinalAmountOk
 
-`func (o *CallbackRequest) GetFinalAmountOk() (*float32, bool)`
+`func (o *CallbackRequest) GetFinalAmountOk() (*float64, bool)`
 
 GetFinalAmountOk returns a tuple with the FinalAmount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFinalAmount
 
-`func (o *CallbackRequest) SetFinalAmount(v float32)`
+`func (o *CallbackRequest) SetFinalAmount(v float64)`
 
 SetFinalAmount sets FinalAmount field to given value.
 

@@ -25,12 +25,11 @@ import (
 	"context"
 	"fmt"
 	"os"
-    "time"
 	openapiclient "github.com/iota-uz/octo/octoapi"
 )
 
 func main() {
-	preparePaymentRequest := *openapiclient.NewPreparePaymentRequest(int32(123), "OctoSecret_example", "ShopTransactionId_example", false, false, time.Now(), float32(123), "Currency_example", "Description_example", []openapiclient.BasketItem{*openapiclient.NewBasketItem("PositionDesc_example", int32(123), float32(123))}, "ReturnUrl_example", "Language_example") // PreparePaymentRequest | 
+	preparePaymentRequest := *openapiclient.NewPreparePaymentRequest(int32(123), "OctoSecret_example", "ShopTransactionId_example", false, false, "InitTime_example", float64(123), "Currency_example", "Description_example", "ReturnUrl_example", "NotifyUrl_example", "Language_example") // PreparePaymentRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

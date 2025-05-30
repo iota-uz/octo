@@ -6,14 +6,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **PositionDesc** | **string** |  | 
 **Count** | **int32** |  | 
-**Price** | **float32** |  | 
+**Price** | **float64** |  | 
 **Spic** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
 ### NewBasketItem
 
-`func NewBasketItem(positionDesc string, count int32, price float32, ) *BasketItem`
+`func NewBasketItem(positionDesc string, count int32, price float64, ) *BasketItem`
 
 NewBasketItem instantiates a new BasketItem object
 This constructor will assign default values to properties that have it defined,
@@ -70,20 +70,20 @@ SetCount sets Count field to given value.
 
 ### GetPrice
 
-`func (o *BasketItem) GetPrice() float32`
+`func (o *BasketItem) GetPrice() float64`
 
 GetPrice returns the Price field if non-nil, zero value otherwise.
 
 ### GetPriceOk
 
-`func (o *BasketItem) GetPriceOk() (*float32, bool)`
+`func (o *BasketItem) GetPriceOk() (*float64, bool)`
 
 GetPriceOk returns a tuple with the Price field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPrice
 
-`func (o *BasketItem) SetPrice(v float32)`
+`func (o *BasketItem) SetPrice(v float64)`
 
 SetPrice sets Price field to given value.
 

@@ -8,13 +8,13 @@ Name | Type | Description | Notes
 **ShopRefundId** | **string** |  | 
 **OctoSecret** | **string** |  | 
 **OctoPaymentUUID** | **string** |  | 
-**Amount** | **float32** |  | 
+**Amount** | **float64** |  | 
 
 ## Methods
 
 ### NewRefundRequest
 
-`func NewRefundRequest(octoShopId int32, shopRefundId string, octoSecret string, octoPaymentUUID string, amount float32, ) *RefundRequest`
+`func NewRefundRequest(octoShopId int32, shopRefundId string, octoSecret string, octoPaymentUUID string, amount float64, ) *RefundRequest`
 
 NewRefundRequest instantiates a new RefundRequest object
 This constructor will assign default values to properties that have it defined,
@@ -111,20 +111,20 @@ SetOctoPaymentUUID sets OctoPaymentUUID field to given value.
 
 ### GetAmount
 
-`func (o *RefundRequest) GetAmount() float32`
+`func (o *RefundRequest) GetAmount() float64`
 
 GetAmount returns the Amount field if non-nil, zero value otherwise.
 
 ### GetAmountOk
 
-`func (o *RefundRequest) GetAmountOk() (*float32, bool)`
+`func (o *RefundRequest) GetAmountOk() (*float64, bool)`
 
 GetAmountOk returns a tuple with the Amount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmount
 
-`func (o *RefundRequest) SetAmount(v float32)`
+`func (o *RefundRequest) SetAmount(v float64)`
 
 SetAmount sets Amount field to given value.
 

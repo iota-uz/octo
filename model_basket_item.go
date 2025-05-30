@@ -24,7 +24,7 @@ var _ MappedNullable = &BasketItem{}
 type BasketItem struct {
 	PositionDesc string  `form:"position_desc" json:"position_desc"`
 	Count        int32   `form:"count" json:"count"`
-	Price        float32 `form:"price" json:"price"`
+	Price        float64 `form:"price" json:"price"`
 	Spic         *string `form:"spic" json:"spic,omitempty"`
 }
 
@@ -34,7 +34,7 @@ type _BasketItem BasketItem
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBasketItem(positionDesc string, count int32, price float32) *BasketItem {
+func NewBasketItem(positionDesc string, count int32, price float64) *BasketItem {
 	this := BasketItem{}
 	this.PositionDesc = positionDesc
 	this.Count = count
@@ -99,9 +99,9 @@ func (o *BasketItem) SetCount(v int32) {
 }
 
 // GetPrice returns the Price field value
-func (o *BasketItem) GetPrice() float32 {
+func (o *BasketItem) GetPrice() float64 {
 	if o == nil {
-		var ret float32
+		var ret float64
 		return ret
 	}
 
@@ -110,7 +110,7 @@ func (o *BasketItem) GetPrice() float32 {
 
 // GetPriceOk returns a tuple with the Price field value
 // and a boolean to check if the value has been set.
-func (o *BasketItem) GetPriceOk() (*float32, bool) {
+func (o *BasketItem) GetPriceOk() (*float64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -118,7 +118,7 @@ func (o *BasketItem) GetPriceOk() (*float32, bool) {
 }
 
 // SetPrice sets field value
-func (o *BasketItem) SetPrice(v float32) {
+func (o *BasketItem) SetPrice(v float64) {
 	o.Price = v
 }
 

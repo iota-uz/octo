@@ -30,7 +30,7 @@ import (
 )
 
 func main() {
-	refundRequest := *openapiclient.NewRefundRequest(int32(123), "ShopRefundId_example", "OctoSecret_example", "OctoPaymentUUID_example", float32(123)) // RefundRequest | 
+	refundRequest := *openapiclient.NewRefundRequest(int32(123), "ShopRefundId_example", "OctoSecret_example", "OctoPaymentUUID_example", float64(123)) // RefundRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -96,7 +96,7 @@ import (
 )
 
 func main() {
-	setAcceptRequest := *openapiclient.NewSetAcceptRequest(int32(123), "OctoSecret_example", "OctoPaymentUUID_example", "AcceptStatus_example", float32(123)) // SetAcceptRequest | 
+	setAcceptRequest := *openapiclient.NewSetAcceptRequest(int32(123), "OctoSecret_example", "OctoPaymentUUID_example", "AcceptStatus_example", float64(123)) // SetAcceptRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

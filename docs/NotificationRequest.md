@@ -9,9 +9,9 @@ Name | Type | Description | Notes
 **Status** | **string** | Current transaction status | 
 **Signature** | **string** | Cryptographic signature | 
 **HashKey** | **string** | Hash key for validation | 
-**TotalSum** | Pointer to **float32** | Total amount of the payment | [optional] 
-**TransferSum** | Pointer to **float32** | Amount transferred after commissions | [optional] 
-**RefundedSum** | Pointer to **float32** | Refunded amount if any | [optional] 
+**TotalSum** | Pointer to **float64** | Total amount of the payment | [optional] 
+**TransferSum** | Pointer to **float64** | Amount transferred after commissions | [optional] 
+**RefundedSum** | Pointer to **float64** | Refunded amount if any | [optional] 
 **CardCountry** | Pointer to **string** | Country where the card was issued | [optional] 
 **MaskedPan** | Pointer to **string** | Masked card number | [optional] 
 **Rrn** | Pointer to **string** | Retrieval Reference Number | [optional] 
@@ -141,20 +141,20 @@ SetHashKey sets HashKey field to given value.
 
 ### GetTotalSum
 
-`func (o *NotificationRequest) GetTotalSum() float32`
+`func (o *NotificationRequest) GetTotalSum() float64`
 
 GetTotalSum returns the TotalSum field if non-nil, zero value otherwise.
 
 ### GetTotalSumOk
 
-`func (o *NotificationRequest) GetTotalSumOk() (*float32, bool)`
+`func (o *NotificationRequest) GetTotalSumOk() (*float64, bool)`
 
 GetTotalSumOk returns a tuple with the TotalSum field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTotalSum
 
-`func (o *NotificationRequest) SetTotalSum(v float32)`
+`func (o *NotificationRequest) SetTotalSum(v float64)`
 
 SetTotalSum sets TotalSum field to given value.
 
@@ -166,20 +166,20 @@ HasTotalSum returns a boolean if a field has been set.
 
 ### GetTransferSum
 
-`func (o *NotificationRequest) GetTransferSum() float32`
+`func (o *NotificationRequest) GetTransferSum() float64`
 
 GetTransferSum returns the TransferSum field if non-nil, zero value otherwise.
 
 ### GetTransferSumOk
 
-`func (o *NotificationRequest) GetTransferSumOk() (*float32, bool)`
+`func (o *NotificationRequest) GetTransferSumOk() (*float64, bool)`
 
 GetTransferSumOk returns a tuple with the TransferSum field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTransferSum
 
-`func (o *NotificationRequest) SetTransferSum(v float32)`
+`func (o *NotificationRequest) SetTransferSum(v float64)`
 
 SetTransferSum sets TransferSum field to given value.
 
@@ -191,20 +191,20 @@ HasTransferSum returns a boolean if a field has been set.
 
 ### GetRefundedSum
 
-`func (o *NotificationRequest) GetRefundedSum() float32`
+`func (o *NotificationRequest) GetRefundedSum() float64`
 
 GetRefundedSum returns the RefundedSum field if non-nil, zero value otherwise.
 
 ### GetRefundedSumOk
 
-`func (o *NotificationRequest) GetRefundedSumOk() (*float32, bool)`
+`func (o *NotificationRequest) GetRefundedSumOk() (*float64, bool)`
 
 GetRefundedSumOk returns a tuple with the RefundedSum field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRefundedSum
 
-`func (o *NotificationRequest) SetRefundedSum(v float32)`
+`func (o *NotificationRequest) SetRefundedSum(v float64)`
 
 SetRefundedSum sets RefundedSum field to given value.
 

@@ -26,7 +26,7 @@ type SetAcceptRequest struct {
 	OctoSecret      string  `form:"octo_secret" json:"octo_secret"`
 	OctoPaymentUUID string  `form:"octo_payment_UUID" json:"octo_payment_UUID"`
 	AcceptStatus    string  `form:"accept_status" json:"accept_status"`
-	FinalAmount     float32 `form:"final_amount" json:"final_amount"`
+	FinalAmount     float64 `form:"final_amount" json:"final_amount"`
 }
 
 type _SetAcceptRequest SetAcceptRequest
@@ -35,7 +35,7 @@ type _SetAcceptRequest SetAcceptRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSetAcceptRequest(octoShopId int32, octoSecret string, octoPaymentUUID string, acceptStatus string, finalAmount float32) *SetAcceptRequest {
+func NewSetAcceptRequest(octoShopId int32, octoSecret string, octoPaymentUUID string, acceptStatus string, finalAmount float64) *SetAcceptRequest {
 	this := SetAcceptRequest{}
 	this.OctoShopId = octoShopId
 	this.OctoSecret = octoSecret
@@ -150,9 +150,9 @@ func (o *SetAcceptRequest) SetAcceptStatus(v string) {
 }
 
 // GetFinalAmount returns the FinalAmount field value
-func (o *SetAcceptRequest) GetFinalAmount() float32 {
+func (o *SetAcceptRequest) GetFinalAmount() float64 {
 	if o == nil {
-		var ret float32
+		var ret float64
 		return ret
 	}
 
@@ -161,7 +161,7 @@ func (o *SetAcceptRequest) GetFinalAmount() float32 {
 
 // GetFinalAmountOk returns a tuple with the FinalAmount field value
 // and a boolean to check if the value has been set.
-func (o *SetAcceptRequest) GetFinalAmountOk() (*float32, bool) {
+func (o *SetAcceptRequest) GetFinalAmountOk() (*float64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -169,7 +169,7 @@ func (o *SetAcceptRequest) GetFinalAmountOk() (*float32, bool) {
 }
 
 // SetFinalAmount sets field value
-func (o *SetAcceptRequest) SetFinalAmount(v float32) {
+func (o *SetAcceptRequest) SetFinalAmount(v float64) {
 	o.FinalAmount = v
 }
 

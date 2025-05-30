@@ -8,9 +8,9 @@ Name | Type | Description | Notes
 **OctoPaymentUUID** | Pointer to **string** |  | [optional] 
 **Status** | Pointer to **string** |  | [optional] 
 **OctoPayUrl** | Pointer to **string** |  | [optional] 
-**TransferSum** | Pointer to **float32** |  | [optional] 
-**RefundedSum** | Pointer to **float32** |  | [optional] 
-**TotalSum** | Pointer to **float32** |  | [optional] 
+**TransferSum** | Pointer to **float64** |  | [optional] 
+**RefundedSum** | Pointer to **float64** |  | [optional] 
+**TotalSum** | Pointer to **float64** |  | [optional] 
 **PayedTime** | Pointer to **time.Time** |  | [optional] 
 
 ## Methods
@@ -134,20 +134,20 @@ HasOctoPayUrl returns a boolean if a field has been set.
 
 ### GetTransferSum
 
-`func (o *SetAcceptSuccessResponseData) GetTransferSum() float32`
+`func (o *SetAcceptSuccessResponseData) GetTransferSum() float64`
 
 GetTransferSum returns the TransferSum field if non-nil, zero value otherwise.
 
 ### GetTransferSumOk
 
-`func (o *SetAcceptSuccessResponseData) GetTransferSumOk() (*float32, bool)`
+`func (o *SetAcceptSuccessResponseData) GetTransferSumOk() (*float64, bool)`
 
 GetTransferSumOk returns a tuple with the TransferSum field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTransferSum
 
-`func (o *SetAcceptSuccessResponseData) SetTransferSum(v float32)`
+`func (o *SetAcceptSuccessResponseData) SetTransferSum(v float64)`
 
 SetTransferSum sets TransferSum field to given value.
 
@@ -159,20 +159,20 @@ HasTransferSum returns a boolean if a field has been set.
 
 ### GetRefundedSum
 
-`func (o *SetAcceptSuccessResponseData) GetRefundedSum() float32`
+`func (o *SetAcceptSuccessResponseData) GetRefundedSum() float64`
 
 GetRefundedSum returns the RefundedSum field if non-nil, zero value otherwise.
 
 ### GetRefundedSumOk
 
-`func (o *SetAcceptSuccessResponseData) GetRefundedSumOk() (*float32, bool)`
+`func (o *SetAcceptSuccessResponseData) GetRefundedSumOk() (*float64, bool)`
 
 GetRefundedSumOk returns a tuple with the RefundedSum field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRefundedSum
 
-`func (o *SetAcceptSuccessResponseData) SetRefundedSum(v float32)`
+`func (o *SetAcceptSuccessResponseData) SetRefundedSum(v float64)`
 
 SetRefundedSum sets RefundedSum field to given value.
 
@@ -184,20 +184,20 @@ HasRefundedSum returns a boolean if a field has been set.
 
 ### GetTotalSum
 
-`func (o *SetAcceptSuccessResponseData) GetTotalSum() float32`
+`func (o *SetAcceptSuccessResponseData) GetTotalSum() float64`
 
 GetTotalSum returns the TotalSum field if non-nil, zero value otherwise.
 
 ### GetTotalSumOk
 
-`func (o *SetAcceptSuccessResponseData) GetTotalSumOk() (*float32, bool)`
+`func (o *SetAcceptSuccessResponseData) GetTotalSumOk() (*float64, bool)`
 
 GetTotalSumOk returns a tuple with the TotalSum field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTotalSum
 
-`func (o *SetAcceptSuccessResponseData) SetTotalSum(v float32)`
+`func (o *SetAcceptSuccessResponseData) SetTotalSum(v float64)`
 
 SetTotalSum sets TotalSum field to given value.
 

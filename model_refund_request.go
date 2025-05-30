@@ -26,7 +26,7 @@ type RefundRequest struct {
 	ShopRefundId    string  `form:"shop_refund_id" json:"shop_refund_id"`
 	OctoSecret      string  `form:"octo_secret" json:"octo_secret"`
 	OctoPaymentUUID string  `form:"octo_payment_UUID" json:"octo_payment_UUID"`
-	Amount          float32 `form:"amount" json:"amount"`
+	Amount          float64 `form:"amount" json:"amount"`
 }
 
 type _RefundRequest RefundRequest
@@ -35,7 +35,7 @@ type _RefundRequest RefundRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRefundRequest(octoShopId int32, shopRefundId string, octoSecret string, octoPaymentUUID string, amount float32) *RefundRequest {
+func NewRefundRequest(octoShopId int32, shopRefundId string, octoSecret string, octoPaymentUUID string, amount float64) *RefundRequest {
 	this := RefundRequest{}
 	this.OctoShopId = octoShopId
 	this.ShopRefundId = shopRefundId
@@ -150,9 +150,9 @@ func (o *RefundRequest) SetOctoPaymentUUID(v string) {
 }
 
 // GetAmount returns the Amount field value
-func (o *RefundRequest) GetAmount() float32 {
+func (o *RefundRequest) GetAmount() float64 {
 	if o == nil {
-		var ret float32
+		var ret float64
 		return ret
 	}
 
@@ -161,7 +161,7 @@ func (o *RefundRequest) GetAmount() float32 {
 
 // GetAmountOk returns a tuple with the Amount field value
 // and a boolean to check if the value has been set.
-func (o *RefundRequest) GetAmountOk() (*float32, bool) {
+func (o *RefundRequest) GetAmountOk() (*float64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -169,7 +169,7 @@ func (o *RefundRequest) GetAmountOk() (*float32, bool) {
 }
 
 // SetAmount sets field value
-func (o *RefundRequest) SetAmount(v float32) {
+func (o *RefundRequest) SetAmount(v float64) {
 	o.Amount = v
 }
 

@@ -21,7 +21,7 @@ var _ MappedNullable = &CallbackResponse{}
 // CallbackResponse struct for CallbackResponse
 type CallbackResponse struct {
 	AcceptStatus *string  `form:"accept_status" json:"accept_status,omitempty"`
-	FinalAmount  *float32 `form:"final_amount" json:"final_amount,omitempty"`
+	FinalAmount  *float64 `form:"final_amount" json:"final_amount,omitempty"`
 }
 
 // NewCallbackResponse instantiates a new CallbackResponse object
@@ -74,9 +74,9 @@ func (o *CallbackResponse) SetAcceptStatus(v string) {
 }
 
 // GetFinalAmount returns the FinalAmount field value if set, zero value otherwise.
-func (o *CallbackResponse) GetFinalAmount() float32 {
+func (o *CallbackResponse) GetFinalAmount() float64 {
 	if o == nil || IsNil(o.FinalAmount) {
-		var ret float32
+		var ret float64
 		return ret
 	}
 	return *o.FinalAmount
@@ -84,7 +84,7 @@ func (o *CallbackResponse) GetFinalAmount() float32 {
 
 // GetFinalAmountOk returns a tuple with the FinalAmount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CallbackResponse) GetFinalAmountOk() (*float32, bool) {
+func (o *CallbackResponse) GetFinalAmountOk() (*float64, bool) {
 	if o == nil || IsNil(o.FinalAmount) {
 		return nil, false
 	}
@@ -100,8 +100,8 @@ func (o *CallbackResponse) HasFinalAmount() bool {
 	return false
 }
 
-// SetFinalAmount gets a reference to the given float32 and assigns it to the FinalAmount field.
-func (o *CallbackResponse) SetFinalAmount(v float32) {
+// SetFinalAmount gets a reference to the given float64 and assigns it to the FinalAmount field.
+func (o *CallbackResponse) SetFinalAmount(v float64) {
 	o.FinalAmount = &v
 }
 

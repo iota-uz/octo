@@ -8,13 +8,13 @@ Name | Type | Description | Notes
 **OctoSecret** | **string** |  | 
 **OctoPaymentUUID** | **string** |  | 
 **AcceptStatus** | **string** |  | 
-**FinalAmount** | **float32** |  | 
+**FinalAmount** | **float64** |  | 
 
 ## Methods
 
 ### NewSetAcceptRequest
 
-`func NewSetAcceptRequest(octoShopId int32, octoSecret string, octoPaymentUUID string, acceptStatus string, finalAmount float32, ) *SetAcceptRequest`
+`func NewSetAcceptRequest(octoShopId int32, octoSecret string, octoPaymentUUID string, acceptStatus string, finalAmount float64, ) *SetAcceptRequest`
 
 NewSetAcceptRequest instantiates a new SetAcceptRequest object
 This constructor will assign default values to properties that have it defined,
@@ -111,20 +111,20 @@ SetAcceptStatus sets AcceptStatus field to given value.
 
 ### GetFinalAmount
 
-`func (o *SetAcceptRequest) GetFinalAmount() float32`
+`func (o *SetAcceptRequest) GetFinalAmount() float64`
 
 GetFinalAmount returns the FinalAmount field if non-nil, zero value otherwise.
 
 ### GetFinalAmountOk
 
-`func (o *SetAcceptRequest) GetFinalAmountOk() (*float32, bool)`
+`func (o *SetAcceptRequest) GetFinalAmountOk() (*float64, bool)`
 
 GetFinalAmountOk returns a tuple with the FinalAmount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFinalAmount
 
-`func (o *SetAcceptRequest) SetFinalAmount(v float32)`
+`func (o *SetAcceptRequest) SetFinalAmount(v float64)`
 
 SetFinalAmount sets FinalAmount field to given value.
 

@@ -34,11 +34,11 @@ type NotificationRequest struct {
 	// Hash key for validation
 	HashKey string `form:"hash_key" json:"hash_key"` // Hash key for validation
 	// Total amount of the payment
-	TotalSum *float32 `form:"total_sum" json:"total_sum,omitempty"` // Total amount of the payment
+	TotalSum *float64 `form:"total_sum" json:"total_sum,omitempty"` // Total amount of the payment
 	// Amount transferred after commissions
-	TransferSum *float32 `form:"transfer_sum" json:"transfer_sum,omitempty"` // Amount transferred after commissions
+	TransferSum *float64 `form:"transfer_sum" json:"transfer_sum,omitempty"` // Amount transferred after commissions
 	// Refunded amount if any
-	RefundedSum *float32 `form:"refunded_sum" json:"refunded_sum,omitempty"` // Refunded amount if any
+	RefundedSum *float64 `form:"refunded_sum" json:"refunded_sum,omitempty"` // Refunded amount if any
 	// Country where the card was issued
 	CardCountry *string `form:"card_country" json:"card_country,omitempty"` // Country where the card was issued
 	// Masked card number
@@ -200,9 +200,9 @@ func (o *NotificationRequest) SetHashKey(v string) {
 }
 
 // GetTotalSum returns the TotalSum field value if set, zero value otherwise.
-func (o *NotificationRequest) GetTotalSum() float32 {
+func (o *NotificationRequest) GetTotalSum() float64 {
 	if o == nil || IsNil(o.TotalSum) {
-		var ret float32
+		var ret float64
 		return ret
 	}
 	return *o.TotalSum
@@ -210,7 +210,7 @@ func (o *NotificationRequest) GetTotalSum() float32 {
 
 // GetTotalSumOk returns a tuple with the TotalSum field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NotificationRequest) GetTotalSumOk() (*float32, bool) {
+func (o *NotificationRequest) GetTotalSumOk() (*float64, bool) {
 	if o == nil || IsNil(o.TotalSum) {
 		return nil, false
 	}
@@ -226,15 +226,15 @@ func (o *NotificationRequest) HasTotalSum() bool {
 	return false
 }
 
-// SetTotalSum gets a reference to the given float32 and assigns it to the TotalSum field.
-func (o *NotificationRequest) SetTotalSum(v float32) {
+// SetTotalSum gets a reference to the given float64 and assigns it to the TotalSum field.
+func (o *NotificationRequest) SetTotalSum(v float64) {
 	o.TotalSum = &v
 }
 
 // GetTransferSum returns the TransferSum field value if set, zero value otherwise.
-func (o *NotificationRequest) GetTransferSum() float32 {
+func (o *NotificationRequest) GetTransferSum() float64 {
 	if o == nil || IsNil(o.TransferSum) {
-		var ret float32
+		var ret float64
 		return ret
 	}
 	return *o.TransferSum
@@ -242,7 +242,7 @@ func (o *NotificationRequest) GetTransferSum() float32 {
 
 // GetTransferSumOk returns a tuple with the TransferSum field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NotificationRequest) GetTransferSumOk() (*float32, bool) {
+func (o *NotificationRequest) GetTransferSumOk() (*float64, bool) {
 	if o == nil || IsNil(o.TransferSum) {
 		return nil, false
 	}
@@ -258,15 +258,15 @@ func (o *NotificationRequest) HasTransferSum() bool {
 	return false
 }
 
-// SetTransferSum gets a reference to the given float32 and assigns it to the TransferSum field.
-func (o *NotificationRequest) SetTransferSum(v float32) {
+// SetTransferSum gets a reference to the given float64 and assigns it to the TransferSum field.
+func (o *NotificationRequest) SetTransferSum(v float64) {
 	o.TransferSum = &v
 }
 
 // GetRefundedSum returns the RefundedSum field value if set, zero value otherwise.
-func (o *NotificationRequest) GetRefundedSum() float32 {
+func (o *NotificationRequest) GetRefundedSum() float64 {
 	if o == nil || IsNil(o.RefundedSum) {
-		var ret float32
+		var ret float64
 		return ret
 	}
 	return *o.RefundedSum
@@ -274,7 +274,7 @@ func (o *NotificationRequest) GetRefundedSum() float32 {
 
 // GetRefundedSumOk returns a tuple with the RefundedSum field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NotificationRequest) GetRefundedSumOk() (*float32, bool) {
+func (o *NotificationRequest) GetRefundedSumOk() (*float64, bool) {
 	if o == nil || IsNil(o.RefundedSum) {
 		return nil, false
 	}
@@ -290,8 +290,8 @@ func (o *NotificationRequest) HasRefundedSum() bool {
 	return false
 }
 
-// SetRefundedSum gets a reference to the given float32 and assigns it to the RefundedSum field.
-func (o *NotificationRequest) SetRefundedSum(v float32) {
+// SetRefundedSum gets a reference to the given float64 and assigns it to the RefundedSum field.
+func (o *NotificationRequest) SetRefundedSum(v float64) {
 	o.RefundedSum = &v
 }
 
