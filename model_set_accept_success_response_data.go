@@ -13,7 +13,6 @@ package octoapi
 
 import (
 	"encoding/json"
-	"time"
 )
 
 // checks if the SetAcceptSuccessResponseData type satisfies the MappedNullable interface at compile time
@@ -21,14 +20,14 @@ var _ MappedNullable = &SetAcceptSuccessResponseData{}
 
 // SetAcceptSuccessResponseData struct for SetAcceptSuccessResponseData
 type SetAcceptSuccessResponseData struct {
-	ShopTransactionId *string    `form:"shop_transaction_id" json:"shop_transaction_id,omitempty"`
-	OctoPaymentUUID   *string    `form:"octo_payment_UUID" json:"octo_payment_UUID,omitempty"`
-	Status            *string    `form:"status" json:"status,omitempty"`
-	OctoPayUrl        *string    `form:"octo_pay_url" json:"octo_pay_url,omitempty"`
-	TransferSum       *float64   `form:"transfer_sum" json:"transfer_sum,omitempty"`
-	RefundedSum       *float64   `form:"refunded_sum" json:"refunded_sum,omitempty"`
-	TotalSum          *float64   `form:"total_sum" json:"total_sum,omitempty"`
-	PayedTime         *time.Time `form:"payed_time" json:"payed_time,omitempty"`
+	ShopTransactionId *string  `form:"shop_transaction_id" json:"shop_transaction_id,omitempty"`
+	OctoPaymentUUID   *string  `form:"octo_payment_UUID" json:"octo_payment_UUID,omitempty"`
+	Status            *string  `form:"status" json:"status,omitempty"`
+	OctoPayUrl        *string  `form:"octo_pay_url" json:"octo_pay_url,omitempty"`
+	TransferSum       *float64 `form:"transfer_sum" json:"transfer_sum,omitempty"`
+	RefundedSum       *float64 `form:"refunded_sum" json:"refunded_sum,omitempty"`
+	TotalSum          *float64 `form:"total_sum" json:"total_sum,omitempty"`
+	PayedTime         *string  `form:"payed_time" json:"payed_time,omitempty"`
 }
 
 // NewSetAcceptSuccessResponseData instantiates a new SetAcceptSuccessResponseData object
@@ -273,9 +272,9 @@ func (o *SetAcceptSuccessResponseData) SetTotalSum(v float64) {
 }
 
 // GetPayedTime returns the PayedTime field value if set, zero value otherwise.
-func (o *SetAcceptSuccessResponseData) GetPayedTime() time.Time {
+func (o *SetAcceptSuccessResponseData) GetPayedTime() string {
 	if o == nil || IsNil(o.PayedTime) {
-		var ret time.Time
+		var ret string
 		return ret
 	}
 	return *o.PayedTime
@@ -283,7 +282,7 @@ func (o *SetAcceptSuccessResponseData) GetPayedTime() time.Time {
 
 // GetPayedTimeOk returns a tuple with the PayedTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SetAcceptSuccessResponseData) GetPayedTimeOk() (*time.Time, bool) {
+func (o *SetAcceptSuccessResponseData) GetPayedTimeOk() (*string, bool) {
 	if o == nil || IsNil(o.PayedTime) {
 		return nil, false
 	}
@@ -299,8 +298,8 @@ func (o *SetAcceptSuccessResponseData) HasPayedTime() bool {
 	return false
 }
 
-// SetPayedTime gets a reference to the given time.Time and assigns it to the PayedTime field.
-func (o *SetAcceptSuccessResponseData) SetPayedTime(v time.Time) {
+// SetPayedTime gets a reference to the given string and assigns it to the PayedTime field.
+func (o *SetAcceptSuccessResponseData) SetPayedTime(v string) {
 	o.PayedTime = &v
 }
 

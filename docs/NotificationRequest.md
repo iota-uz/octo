@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **MaskedPan** | Pointer to **string** | Masked card number | [optional] 
 **Rrn** | Pointer to **string** | Retrieval Reference Number | [optional] 
 **RiskLevel** | Pointer to **int32** | Risk level of the transaction | [optional] 
-**PayedTime** | Pointer to **time.Time** | Timestamp of successful payment | [optional] 
+**PayedTime** | Pointer to **string** | Timestamp of successful payment | [optional] 
 **CardType** | Pointer to **string** | Type of the card used | [optional] 
 **IsPhysicalCard** | Pointer to **bool** | Whether the card is physical | [optional] 
 
@@ -316,20 +316,20 @@ HasRiskLevel returns a boolean if a field has been set.
 
 ### GetPayedTime
 
-`func (o *NotificationRequest) GetPayedTime() time.Time`
+`func (o *NotificationRequest) GetPayedTime() string`
 
 GetPayedTime returns the PayedTime field if non-nil, zero value otherwise.
 
 ### GetPayedTimeOk
 
-`func (o *NotificationRequest) GetPayedTimeOk() (*time.Time, bool)`
+`func (o *NotificationRequest) GetPayedTimeOk() (*string, bool)`
 
 GetPayedTimeOk returns a tuple with the PayedTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPayedTime
 
-`func (o *NotificationRequest) SetPayedTime(v time.Time)`
+`func (o *NotificationRequest) SetPayedTime(v string)`
 
 SetPayedTime sets PayedTime field to given value.
 

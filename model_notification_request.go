@@ -15,7 +15,6 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"time"
 )
 
 // checks if the NotificationRequest type satisfies the MappedNullable interface at compile time
@@ -48,7 +47,7 @@ type NotificationRequest struct {
 	// Risk level of the transaction
 	RiskLevel *int32 `form:"riskLevel" json:"riskLevel,omitempty"` // Risk level of the transaction
 	// Timestamp of successful payment
-	PayedTime *time.Time `form:"payed_time" json:"payed_time,omitempty"` // Timestamp of successful payment
+	PayedTime *string `form:"payed_time" json:"payed_time,omitempty"` // Timestamp of successful payment
 	// Type of the card used
 	CardType *string `form:"card_type" json:"card_type,omitempty"` // Type of the card used
 	// Whether the card is physical
@@ -424,9 +423,9 @@ func (o *NotificationRequest) SetRiskLevel(v int32) {
 }
 
 // GetPayedTime returns the PayedTime field value if set, zero value otherwise.
-func (o *NotificationRequest) GetPayedTime() time.Time {
+func (o *NotificationRequest) GetPayedTime() string {
 	if o == nil || IsNil(o.PayedTime) {
-		var ret time.Time
+		var ret string
 		return ret
 	}
 	return *o.PayedTime
@@ -434,7 +433,7 @@ func (o *NotificationRequest) GetPayedTime() time.Time {
 
 // GetPayedTimeOk returns a tuple with the PayedTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NotificationRequest) GetPayedTimeOk() (*time.Time, bool) {
+func (o *NotificationRequest) GetPayedTimeOk() (*string, bool) {
 	if o == nil || IsNil(o.PayedTime) {
 		return nil, false
 	}
@@ -450,8 +449,8 @@ func (o *NotificationRequest) HasPayedTime() bool {
 	return false
 }
 
-// SetPayedTime gets a reference to the given time.Time and assigns it to the PayedTime field.
-func (o *NotificationRequest) SetPayedTime(v time.Time) {
+// SetPayedTime gets a reference to the given string and assigns it to the PayedTime field.
+func (o *NotificationRequest) SetPayedTime(v string) {
 	o.PayedTime = &v
 }
 

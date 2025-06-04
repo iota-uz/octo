@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **TransferSum** | Pointer to **float64** |  | [optional] 
 **RefundedSum** | Pointer to **float64** |  | [optional] 
 **TotalSum** | Pointer to **float64** |  | [optional] 
-**PayedTime** | Pointer to **time.Time** |  | [optional] 
+**PayedTime** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -209,20 +209,20 @@ HasTotalSum returns a boolean if a field has been set.
 
 ### GetPayedTime
 
-`func (o *SetAcceptSuccessResponseData) GetPayedTime() time.Time`
+`func (o *SetAcceptSuccessResponseData) GetPayedTime() string`
 
 GetPayedTime returns the PayedTime field if non-nil, zero value otherwise.
 
 ### GetPayedTimeOk
 
-`func (o *SetAcceptSuccessResponseData) GetPayedTimeOk() (*time.Time, bool)`
+`func (o *SetAcceptSuccessResponseData) GetPayedTimeOk() (*string, bool)`
 
 GetPayedTimeOk returns a tuple with the PayedTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPayedTime
 
-`func (o *SetAcceptSuccessResponseData) SetPayedTime(v time.Time)`
+`func (o *SetAcceptSuccessResponseData) SetPayedTime(v string)`
 
 SetPayedTime sets PayedTime field to given value.
 
