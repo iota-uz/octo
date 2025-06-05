@@ -5,7 +5,7 @@ const (
 	CancelledStatus         = "cancelled"
 	WaitUserActionStatus    = "wait_user_action"
 	WaitingForCaptureStatus = "waiting_for_capture"
-	Capture                 = "capture"
+	CaptureStatus           = "capture"
 	SucceededStatus         = "succeeded"
 	FailedStatus            = "failed"
 )
