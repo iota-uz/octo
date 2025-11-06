@@ -54,6 +54,8 @@ type NotificationRequest struct {
 	IsPhysicalCard *bool `form:"is_physical_card" json:"is_physical_card,omitempty"` // Whether the card is physical
 	// Currency code of the payment (e.g., 'UZS', USD', 'EUR', 'RUB')
 	Currency *string `form:"currency" json:"currency,omitempty"` // Currency code of the payment (e.g., &#39;UZS&#39;, USD&#39;, &#39;EUR&#39;, &#39;RUB&#39;)
+	// Card vendor or payment system (e.g., 'uzcard', 'humo', 'visa', 'master')
+	CardVendor *string `form:"card_vendor" json:"card_vendor,omitempty"` // Card vendor or payment system (e.g., &#39;uzcard&#39;, &#39;humo&#39;, &#39;visa&#39;, &#39;master&#39;)
 }
 
 type _NotificationRequest NotificationRequest
@@ -552,6 +554,38 @@ func (o *NotificationRequest) SetCurrency(v string) {
 	o.Currency = &v
 }
 
+// GetCardVendor returns the CardVendor field value if set, zero value otherwise.
+func (o *NotificationRequest) GetCardVendor() string {
+	if o == nil || IsNil(o.CardVendor) {
+		var ret string
+		return ret
+	}
+	return *o.CardVendor
+}
+
+// GetCardVendorOk returns a tuple with the CardVendor field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationRequest) GetCardVendorOk() (*string, bool) {
+	if o == nil || IsNil(o.CardVendor) {
+		return nil, false
+	}
+	return o.CardVendor, true
+}
+
+// HasCardVendor returns a boolean if a field has been set.
+func (o *NotificationRequest) HasCardVendor() bool {
+	if o != nil && !IsNil(o.CardVendor) {
+		return true
+	}
+
+	return false
+}
+
+// SetCardVendor gets a reference to the given string and assigns it to the CardVendor field.
+func (o *NotificationRequest) SetCardVendor(v string) {
+	o.CardVendor = &v
+}
+
 func (o NotificationRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -599,6 +633,9 @@ func (o NotificationRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Currency) {
 		toSerialize["currency"] = o.Currency
+	}
+	if !IsNil(o.CardVendor) {
+		toSerialize["card_vendor"] = o.CardVendor
 	}
 	return toSerialize, nil
 }

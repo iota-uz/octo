@@ -702,6 +702,10 @@
           "currency": {
             "type": "string",
             "description": "Currency code of the payment (e.g., 'UZS', USD', 'EUR', 'RUB')"
+          },
+          "card_vendor": {
+            "type": "string",
+            "description": "Card vendor or payment system (e.g., 'uzcard', 'humo', 'visa', 'master')"
           }
         }
       },

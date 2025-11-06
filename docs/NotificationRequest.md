@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **CardType** | Pointer to **string** | Type of the card used | [optional] 
 **IsPhysicalCard** | Pointer to **bool** | Whether the card is physical | [optional] 
 **Currency** | Pointer to **string** | Currency code of the payment (e.g., &#39;UZS&#39;, USD&#39;, &#39;EUR&#39;, &#39;RUB&#39;) | [optional] 
+**CardVendor** | Pointer to **string** | Card vendor or payment system (e.g., &#39;uzcard&#39;, &#39;humo&#39;, &#39;visa&#39;, &#39;master&#39;) | [optional] 
 
 ## Methods
 
@@ -414,6 +415,31 @@ SetCurrency sets Currency field to given value.
 `func (o *NotificationRequest) HasCurrency() bool`
 
 HasCurrency returns a boolean if a field has been set.
+
+### GetCardVendor
+
+`func (o *NotificationRequest) GetCardVendor() string`
+
+GetCardVendor returns the CardVendor field if non-nil, zero value otherwise.
+
+### GetCardVendorOk
+
+`func (o *NotificationRequest) GetCardVendorOk() (*string, bool)`
+
+GetCardVendorOk returns a tuple with the CardVendor field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCardVendor
+
+`func (o *NotificationRequest) SetCardVendor(v string)`
+
+SetCardVendor sets CardVendor field to given value.
+
+### HasCardVendor
+
+`func (o *NotificationRequest) HasCardVendor() bool`
+
+HasCardVendor returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
