@@ -698,6 +698,10 @@
           "is_physical_card": {
             "type": "boolean",
             "description": "Whether the card is physical"
+          },
+          "currency": {
+            "type": "string",
+            "description": "Currency code of the payment (e.g., 'UZS', USD', 'EUR', 'RUB')"
           }
         }
       },

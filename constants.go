@@ -1,4 +1,4 @@
-﻿package octoapi
+package octoapi
 
 const (
 	CreatedStatus           = "created"
@@ -8,4 +8,5 @@ const (
 	CaptureStatus           = "capture"
 	SucceededStatus         = "succeeded"
 	FailedStatus            = "failed"
+	CancelStatus            = "cancel"
 )

@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **PayedTime** | Pointer to **string** | Timestamp of successful payment | [optional] 
 **CardType** | Pointer to **string** | Type of the card used | [optional] 
 **IsPhysicalCard** | Pointer to **bool** | Whether the card is physical | [optional] 
+**Currency** | Pointer to **string** | Currency code of the payment (e.g., &#39;UZS&#39;, USD&#39;, &#39;EUR&#39;, &#39;RUB&#39;) | [optional] 
 
 ## Methods
 
@@ -388,6 +389,31 @@ SetIsPhysicalCard sets IsPhysicalCard field to given value.
 `func (o *NotificationRequest) HasIsPhysicalCard() bool`
 
 HasIsPhysicalCard returns a boolean if a field has been set.
+
+### GetCurrency
+
+`func (o *NotificationRequest) GetCurrency() string`
+
+GetCurrency returns the Currency field if non-nil, zero value otherwise.
+
+### GetCurrencyOk
+
+`func (o *NotificationRequest) GetCurrencyOk() (*string, bool)`
+
+GetCurrencyOk returns a tuple with the Currency field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCurrency
+
+`func (o *NotificationRequest) SetCurrency(v string)`
+
+SetCurrency sets Currency field to given value.
+
+### HasCurrency
+
+`func (o *NotificationRequest) HasCurrency() bool`
+
+HasCurrency returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

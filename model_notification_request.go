@@ -52,6 +52,8 @@ type NotificationRequest struct {
 	CardType *string `form:"card_type" json:"card_type,omitempty"` // Type of the card used
 	// Whether the card is physical
 	IsPhysicalCard *bool `form:"is_physical_card" json:"is_physical_card,omitempty"` // Whether the card is physical
+	// Currency code of the payment (e.g., 'UZS', USD', 'EUR', 'RUB')
+	Currency *string `form:"currency" json:"currency,omitempty"` // Currency code of the payment (e.g., &#39;UZS&#39;, USD&#39;, &#39;EUR&#39;, &#39;RUB&#39;)
 }
 
 type _NotificationRequest NotificationRequest
@@ -518,6 +520,38 @@ func (o *NotificationRequest) SetIsPhysicalCard(v bool) {
 	o.IsPhysicalCard = &v
 }
 
+// GetCurrency returns the Currency field value if set, zero value otherwise.
+func (o *NotificationRequest) GetCurrency() string {
+	if o == nil || IsNil(o.Currency) {
+		var ret string
+		return ret
+	}
+	return *o.Currency
+}
+
+// GetCurrencyOk returns a tuple with the Currency field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationRequest) GetCurrencyOk() (*string, bool) {
+	if o == nil || IsNil(o.Currency) {
+		return nil, false
+	}
+	return o.Currency, true
+}
+
+// HasCurrency returns a boolean if a field has been set.
+func (o *NotificationRequest) HasCurrency() bool {
+	if o != nil && !IsNil(o.Currency) {
+		return true
+	}
+
+	return false
+}
+
+// SetCurrency gets a reference to the given string and assigns it to the Currency field.
+func (o *NotificationRequest) SetCurrency(v string) {
+	o.Currency = &v
+}
+
 func (o NotificationRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -562,6 +596,9 @@ func (o NotificationRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.IsPhysicalCard) {
 		toSerialize["is_physical_card"] = o.IsPhysicalCard
+	}
+	if !IsNil(o.Currency) {
+		toSerialize["currency"] = o.Currency
 	}
 	return toSerialize, nil
 }
